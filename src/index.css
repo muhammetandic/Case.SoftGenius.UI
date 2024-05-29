@@ -1,0 +1,51 @@
+html {
+  --primary-bg-color: #eee;
+  --secondary-bg-color: #fff;
+  --primary-color: #222831;
+  --secondary-color: #00adb5;
+}
+
+body {
+  background-color: var(--primary-bg-color);
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--primary-color);
+  background-color: var(--primary-bg-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.field {
+  height: 4rem;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.error {
+  color: #ff0000;
+}
+
+.api-error {
+  height: 1rem;
+}
+
+.content-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+}
