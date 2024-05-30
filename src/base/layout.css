@@ -23,6 +23,12 @@
   color: var(--primary-color);
 }
 
+.logo a,
+.logo a:hover {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
 .nav-item {
   text-decoration: none;
   margin-left: 1rem;

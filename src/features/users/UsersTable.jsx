@@ -1,25 +1,9 @@
-import { Dimmer, Loader, Button } from "semantic-ui-react";
+import { Dimmer, Loader } from "semantic-ui-react";
 import { DataTable } from "../../components/DataTable";
-import { useUsers } from "./useUsers";
 import { UserEdit } from "./UserEdit";
+import { UserDelete } from "./UserDelete";
 
-const DeleteComponent = ({ id }) => {
-  const { deleteUser } = useUsers();
-  const { mutate: removeUser } = deleteUser();
-  const onClick = () => {
-    removeUser(id);
-  };
-  return (
-    <Button color="red" onClick={onClick}>
-      Delete
-    </Button>
-  );
-};
-
-export const UsersTable = () => {
-  const { getUsers } = useUsers();
-  const { data, error, isLoading } = getUsers();
-
+export const UsersTable = ({ data, error, isLoading }) => {
   return (
     <div>
       {error && <p>Error: {error.message}</p>}
@@ -31,7 +15,7 @@ export const UsersTable = () => {
         fields={["name", "email", "countryName"]}
         data={data}
         EditComponent={UserEdit}
-        DeleteComponent={DeleteComponent}
+        DeleteComponent={UserDelete}
       />
     </div>
   );

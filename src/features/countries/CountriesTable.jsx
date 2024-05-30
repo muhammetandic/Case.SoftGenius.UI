@@ -1,11 +1,8 @@
 import { Dimmer, Loader } from "semantic-ui-react";
-import { useCountries } from "./useCountries";
 import { DataTable } from "../../components/DataTable";
 import { CountryEdit } from "./CountryEdit";
 
-export const CountriesTable = () => {
-  const { getCountries } = useCountries();
-  const { isLoading, error, data } = getCountries();
+export const CountriesTable = ({ data, error, isLoading }) => {
   return (
     <div>
       {error && <p>Error: {error.message}</p>}

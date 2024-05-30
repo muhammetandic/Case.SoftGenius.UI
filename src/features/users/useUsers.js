@@ -35,10 +35,10 @@ export const useUsers = () => {
     });
   };
 
-  const getUsers = () => {
+  const getUsers = (params) => {
     return useQuery({
-      queryKey: ["users"],
-      queryFn: () => getData({ endpoint: "/users" }),
+      queryKey: ["users", params.page, params.pageSize, params.all],
+      queryFn: () => getData({ endpoint: "/users", params }),
     });
   };
 

@@ -30,7 +30,9 @@ export const DataTable = ({
           data.map((data) => (
             <TableRow key={data.id}>
               {fields &&
-                fields.map((field) => <TableCell>{data[field]}</TableCell>)}
+                fields.map((field) => (
+                  <TableCell key={field}>{data[field]}</TableCell>
+                ))}
               <TableCell>
                 <EditComponent title="Edit" data={data} />
                 {DeleteComponent && <DeleteComponent id={data.id} />}

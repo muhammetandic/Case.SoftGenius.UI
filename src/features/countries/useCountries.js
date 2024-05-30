@@ -5,10 +5,10 @@ import { getData, postData, putData } from "../../services/apiService";
 export const useCountries = () => {
   const queryClient = useQueryClient();
 
-  const getCountries = () => {
+  const getCountries = (params) => {
     return useQuery({
-      queryKey: ["countries"],
-      queryFn: () => getData({ endpoint: "/countries" }),
+      queryKey: ["countries", params.page, params.pageSize, params.all],
+      queryFn: () => getData({ endpoint: "/countries", params }),
     });
   };
 

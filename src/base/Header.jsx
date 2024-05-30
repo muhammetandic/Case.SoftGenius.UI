@@ -1,29 +1,34 @@
 import { Link, useMatch } from "react-router-dom";
 import { Divider } from "semantic-ui-react";
+import { Menu, MenuItem } from "semantic-ui-react";
 
 export const Header = ({ displayMenu }) => {
-  const match = useMatch("/users");
+  const userMatch = useMatch("/users");
+  const countryMatch = useMatch("/countries");
+  const match = userMatch || countryMatch;
 
   return (
     <div className="header">
       <div className="header-content">
-        <div className="logo">Case for SoftGenius</div>
+        <div className="logo">
+          <Link to="/">Case for SoftGenius</Link>
+        </div>
         <div className="nav">
           {displayMenu && (
-            <>
-              <Link
-                className={Boolean(match) ? "nav-item-active" : "nav-item"}
+            <Menu pointing secondary>
+              <MenuItem
+                name="users"
+                active={Boolean(userMatch)}
+                as={Link}
                 to="/users"
-              >
-                Users
-              </Link>
-              <Link
-                className={!Boolean(match) ? "nav-item-active" : "nav-item"}
+              />
+              <MenuItem
+                name="countries"
+                active={Boolean(countryMatch)}
+                as={Link}
                 to="/countries"
-              >
-                Countries
-              </Link>
-            </>
+              />
+            </Menu>
           )}
         </div>
       </div>

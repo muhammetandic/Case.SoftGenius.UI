@@ -46,8 +46,6 @@ export const CountryEdit = ({ title, data }) => {
     setOpen(false);
   };
 
-  console.log(isError);
-
   return (
     <Modal
       onClose={onClose}

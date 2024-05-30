@@ -16,13 +16,8 @@ export const ControlledInput = ({
         rules={rules}
         render={({ field, fieldState }) => (
           <>
-            <Input
-              fluid
-              label={label}
-              name={name}
-              error={fieldState.error}
-              {...field}
-            />
+            <p className="label">{label}</p>
+            <Input fluid name={name} error={fieldState.error} {...field} />
             {fieldState.error && <p className="error">{errorMessage}</p>}
           </>
         )}

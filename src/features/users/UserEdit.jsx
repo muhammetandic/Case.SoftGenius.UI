@@ -8,10 +8,18 @@ import {
 } from "semantic-ui-react";
 import { useForm } from "react-hook-form";
 import { useUsers } from "./useUsers";
+import { useCountries } from "../countries/useCountries";
 import { ControlledInput } from "../../components/ControlledInput";
+import { ControlledSelect } from "../../components/ControlledSelect";
 
 export const UserEdit = ({ title, data }) => {
   const [open, setOpen] = useState(false);
+  const { getCountries } = useCountries();
+  const { data: countries } = getCountries({
+    page: 0,
+    pageSize: 10,
+    all: true,
+  });
   const { upsertUser } = useUsers();
   const { mutate: addOrUpdateUser, isPending, isError, reset } = upsertUser();
   const {
@@ -38,7 +46,6 @@ export const UserEdit = ({ title, data }) => {
   };
 
   const onSubmit = (values) => {
-    console.log(values);
     addOrUpdateUser(values, { onSuccess: () => onClose() });
   };
 
@@ -70,6 +77,15 @@ export const UserEdit = ({ title, data }) => {
             }}
             control={control}
             errorMessage="Please enter a valid email"
+          />
+          <ControlledSelect
+            name="countryId"
+            label="Country"
+            rules={{ required: true }}
+            control={control}
+            errorMessage="Please select a country"
+            value={data?.countryName}
+            options={countries?.data}
           />
         </form>
         <div className="api-error">
