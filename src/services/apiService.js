@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:5233";
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 export const getData = async ({ endpoint, params = null }) => {
   const urlParams = new URLSearchParams(params);

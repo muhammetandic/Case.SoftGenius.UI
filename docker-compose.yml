@@ -1,0 +1,35 @@
+version: 'version 3'
+
+services:
+  client:
+    image: case/softgenius/ui
+    container_name: case-softgenius-ui
+    restart: always
+    build: ./
+    ports:
+      - "3000:3000"
+    depends_on:
+      server:
+        condition: service_healthy
+  server:
+    image: case/softgenius/server
+    container_name: case-softgenius-server
+    restart: always
+    build: ../Case.SoftGenius.Api/
+    ports:
+      - "8080:8080"
+    depends_on:
+      mssql:
+        condition: service_healthy
+  mssql:
+    container_name: sqlserver
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    restart: always
+    environment:
+      - accept-eula="Y"
+      - sa-password="Deneme.01"
+      - TZ="Europe/Istanbul"
+    volumes:
+      - ./data:/var/opt/mssql
+    ports:
+      - "1433:1433"
