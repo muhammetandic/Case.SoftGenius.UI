@@ -30,7 +30,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-  ,
 ]);
 
 const queryClient = new QueryClient();

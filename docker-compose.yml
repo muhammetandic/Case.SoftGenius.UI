@@ -24,9 +24,8 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
     restart: always
     environment:
-      - accept-eula=Y
-      - sa-password=Deneme.01
-      - TZ="Europe/Istanbul"
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Deneme.01
     volumes:
       - ./data:/mssql
     ports:
